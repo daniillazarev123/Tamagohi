@@ -63,16 +63,23 @@ public class MainActivity extends AppCompatActivity {
         btnPlay = findViewById(R.id.btn_play);
         btnRest = findViewById(R.id.btn_rest);
         button3 = findViewById(R.id.button3);
+       button3.setOnClickListener(new View.OnClickListener() {
+            int[] imageArray = {R.drawable.animals, R.drawable.kil, R.drawable.bunny};
+            int currentIndex = 0;
 
-        button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "ауууууу", Toast.LENGTH_SHORT).show();
+                currentIndex++;
+                if (currentIndex >= imageArray.length) {
+                    currentIndex = 0;
+                }
+                button3.setBackgroundResource(imageArray[currentIndex]);
             }
         });
+
         Button button3 = findViewById(R.id.button3);
 
-        ObjectAnimator animator = ObjectAnimator.ofFloat(button3, "translationX", 0f, 500f);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(button3, "translationX", 0f, 200f);
         animator.setDuration(1000);
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.setRepeatMode(ValueAnimator.REVERSE);
